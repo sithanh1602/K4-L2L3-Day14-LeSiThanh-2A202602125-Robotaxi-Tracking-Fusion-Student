@@ -1,0 +1,3 @@
+track_id,frame,error,detail
+0,16,fragmentation_suspect,ID xuat hien giua sequence o 52 m (khong phai frame dau)
+0,16,no_interpolation,50/50 frame la keyframe — co the dang ve tay tung frame

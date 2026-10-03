@@ -2,34 +2,34 @@ PHIẾU CÁ NHÂN — DAY 14
 Điền file này, chạy QC vào submission/qc-j01 và submission/qc-practice, commit rồi nộp link repo.
 Không dán ảnh, toạ độ điểm hay nội dung file export vào đây.
 
-Họ tên / mã học viên:
-Object J01 (a/b/c/d theo docs/cases.md) / track ID trong task J01:
-Phiên bản CVAT / overlay đã bật (có/không):
+Họ tên / mã học viên: Lê Sĩ Thanh / 2A202602125
+Object J01 (a/b/c/d theo docs/cases.md) / track ID trong task J01: J01-b / track_id 0 trong export Datumaro của task J01.
+Phiên bản CVAT / overlay đã bật (có/không): CVAT local; chưa ghi nhận số phiên bản. Có: học viên đã quan sát cuboid chiếu trên image_1.
 
 J01 — TRACK LÕI
-Frame fit và lý do:
-L / W / H (m):
-Keyframe quan trọng và lý do:
-Đã bấm F qua đủ frame 0–65 (có/không):
-Đoạn thưa / che khuất / dễ nhầm identity:
+Frame fit và lý do: Frame 50: điểm xe rõ, thuận lợi để nhận ranh giới xe và fit cuboid; học viên tự kéo hộp theo xe để xác lập L/W/H tham chiếu.
+L / W / H (m): 4,19 / 1,62 / 1,50 (m), xác nhận từ dataExportJ01.zip; nhất quán toàn bộ frame 16–65.
+Keyframe quan trọng và lý do: Frame 16: đầu track; frame 50: fit tham chiếu vì điểm xe rõ; frame 65: xe vẫn còn ở cuối sequence. Bản cuối có 50/50 keyframe, học viên đã thao tác và kiểm đoạn track; chưa ghi riêng lý do từng mốc trung gian.
+Đã bấm F qua đủ frame 0–65 (có/không): Đã kiểm đoạn track 16–65 theo xác nhận của học viên. Chưa xác nhận đã kiểm đầy đủ 0–15; frame đầu 16 là lựa chọn đã đính chính của học viên.
+Đoạn thưa / che khuất / dễ nhầm identity: Frame 25 và 26: camera còn thấy xe nhưng điểm LiDAR bị che/mất điểm; có điểm cây làm khó nhận diện. Giữ cùng track trong bản cuối; giới hạn evidence 3D được ghi nhận.
 
 SELF-QC (từ qc_tracks.csv / qc_flags.csv)
-Lần QC đầu — cờ của track J01 (loại, frame):
-Quyết định cho từng cờ (sửa / giữ vì hợp lệ / chưa đủ evidence) và lý do:
-Đã sửa gì sau QC đầu; QC cuối còn cờ nào:
-Nhận xét của bạn cùng cặp và bạn đồng ý/không đồng ý vì sao:
+Lần QC đầu — cờ của track J01 (loại, frame): fragmentation_suspect tại 16; no_interpolation tại 16. Một track, 50 frame (16–65), không gap, drift L/W/H = 0; không có cờ nhảy tâm/hướng.
+Quyết định cho từng cờ (sửa / giữ vì hợp lệ / chưa đủ evidence) và lý do: fragmentation_suspect tại 16: giữ mốc đầu 16 theo xác nhận học viên, nhưng chưa đủ evidence để xác nhận toàn đoạn 0–15; không coi cờ đã được loại trừ hoàn toàn. no_interpolation tại 16: giữ các keyframe đã làm và kiểm; không xóa mốc chỉ để giảm cảnh báo. QC không thay thế kiểm hình học bằng mắt.
+Đã sửa gì sau QC đầu; QC cuối còn cờ nào: Đã điều chỉnh kích thước so với export đầu: W cuối = 1,62 m. H của export trước rework = 1,42 m; sửa hàng loạt thành 1,50 m trên 50 frame 16–65 và dịch tâm theo trục cao để giữ nguyên đáy. Bản H=1,75 m trung gian không phải bản nộp cuối. Học viên xác nhận import xong; dataExportJ01.zip xác nhận H=1,50 m ở mọi frame. QC cuối: fragmentation_suspect và no_interpolation tại 16; không gap, drift L/W/H=0, không cờ nhảy tâm/hướng.
+Nhận xét của bạn cùng cặp và bạn đồng ý/không đồng ý vì sao: Chưa ghi nhận review của bạn cùng cặp; chưa có nhận xét để đánh giá đồng ý/không đồng ý.
 
 CAMERA–LIDAR (overlay trên image_1)
-Ca bình thường (frame / quan sát):
-Ca khó (frame / quan sát 2D / quan sát 3D):
-Giả thuyết nguyên nhân (annotation / FOV / occlusion / sparse / nghi calibration / chưa đủ evidence):
-Hành động (sửa / giữ / báo Lab Coach) và lý do:
+Ca bình thường (frame / quan sát): Frame 40: xe rõ trên image_1, cuboid chiếu bao đúng xe nhưng dư phía nóc một chút (quan sát của học viên; chưa đo mức lệch).
+Ca khó (frame / quan sát 2D / quan sát 3D): Frame 25 và 26 (học viên xác nhận cả hai): camera còn thấy xe; point cloud xe bị che/mất điểm. Chưa ghi mức lệch của overlay tại hai frame này.
+Giả thuyết nguyên nhân (annotation / FOV / occlusion / sparse / nghi calibration / chưa đủ evidence): Frame 40: nghi geometry annotation vì học viên xác nhận hộp chưa sát nóc/mặt đường trong Side/Front; không kết luận calibration sai. Frame 25–26: nghi che khuất/điểm thưa của LiDAR vì camera vẫn thấy xe; chưa đủ evidence để kết luận nguyên nhân cảm biến cụ thể.
+Hành động (sửa / giữ / báo Lab Coach) và lý do: Sửa: học viên chọn H cuối 1,50 m, áp dụng nhất quán toàn track và giữ đáy hộp, đã import và export lại. Giữ track ở 25–26 thay vì outside chỉ vì mất điểm LiDAR; camera còn thấy xe. Chưa ghi nhận quan sát overlay frame 40 sau rework, nên chưa khẳng định phần dư nóc đã hết.
 
 CASE NGẮN (task practice)
-Case → track ID (ví dụ B01 → 3):
-Case đã xong:
-Case đang dở / chỗ kẹt:
-fragmentation_suspect ở đầu/cuối case đã kiểm là do cách cắt case (có/không):
+Case → track ID (ví dụ B01 → 3): B01 → track_id 0 trong export practice; B02 → track_id 1 trong export practice / ID 3 hiển thị CVAT. ID export riêng cho từng task.
+Case đã xong: B01: frame 16–21, outside từ 22; học viên báo đã sửa việc track hiện lại sau 22. B02: frame 28–33, outside từ 34; học viên báo hoàn thành. B02 fit tại 33, L/W/H = 4,34 / 1,63 / 1,42 m.
+Case đang dở / chỗ kẹt: Chốt phạm vi B01 và B02; không tiếp tục B03–H06.
+fragmentation_suspect ở đầu/cuối case đã kiểm là do cách cắt case (có/không): Có: export practice có B01 đúng 16–21 và B02 đúng 28–33, mỗi track 6 frame, không gap. Bốn cờ fragmentation_suspect tại 16/21 (B01) và 28/33 (B02) là do phạm vi case quy định; giữ. B02 có no_interpolation tại 28 (6/6 keyframe); giữ các mốc đã chỉnh, học viên xác nhận đã hoàn thành case; chưa ghi riêng lý do từng mốc. Drift L/W/H của cả hai track = 0; không có cờ nhảy tâm/hướng.
 
 THỜI GIAN
-J01 / case ngắn / QC và fusion:
+J01 / case ngắn / QC và fusion: Chưa ghi lại thời lượng từng phần; không ước lượng thay số liệu thực tế.
